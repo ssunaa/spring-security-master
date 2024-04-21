@@ -1,5 +1,6 @@
 package io.security.springsecuritymaster;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
@@ -10,8 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
+    @Autowired
+    SecurityContextService securityContextService;
+
     @GetMapping("/")
     public String index(String customParam) {
+        securityContextService.securityContext();
         if (customParam != null) {
             return "customPage";
         }
