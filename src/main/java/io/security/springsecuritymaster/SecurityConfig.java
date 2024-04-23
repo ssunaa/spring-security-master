@@ -24,7 +24,7 @@ public class SecurityConfig {
         // managerBuilder.authenticationProvider(customAuthenticationProvider());
         // managerBuilder.authenticationProvider(customAuthenticationProvider2());
         managerBuilder.authenticationProvider(new CustomAuthenticationProvider());
-        managerBuilder.authenticationProvider(new CustomAuthenticationProvider2());
+        // managerBuilder.authenticationProvider(new CustomAuthenticationProvider2());
 
         http
                 .authorizeHttpRequests(auth -> auth
@@ -36,14 +36,18 @@ public class SecurityConfig {
         return http.build();
     }
 
+    public CustomUserDetailsService customUserDetailsService() {
+        return new CustomUserDetailsService();
+    }
+
     @Bean
-    public AuthenticationProvider customAuthenticationProvider(){
+    public AuthenticationProvider customAuthenticationProvider() {
         return new CustomAuthenticationProvider();
     }
 
     @Bean
     public AuthenticationProvider customAuthenticationProvider2(){
-        return new CustomAuthenticationProvider2();
+        return new CustomAuthenticationProvider2(null);
     }
 
     @Bean
