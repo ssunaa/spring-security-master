@@ -1,6 +1,6 @@
 package io.security.springsecuritymaster;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class IndexController {
 
-    @Autowired
-    SecurityContextService securityContextService;
+    private final SessionInfoService sessionInfoService;
 
     @GetMapping("/")
     public Authentication index(Authentication authentication){
         return authentication;
+    }
+
+    @GetMapping("/sessionInfo")
+    public void sessionInfo() {
+        sessionInfoService.sessionInfo();
     }
 
     @GetMapping("/home")
