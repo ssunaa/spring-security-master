@@ -15,12 +15,8 @@ public class IndexController {
     SecurityContextService securityContextService;
 
     @GetMapping("/")
-    public String index(String customParam) {
-        securityContextService.securityContext();
-        if (customParam != null) {
-            return "customPage";
-        }
-        return "index";
+    public Authentication index(Authentication authentication){
+        return authentication;
     }
 
     @GetMapping("/home")
@@ -51,6 +47,16 @@ public class IndexController {
     @GetMapping("/anonymousContext")
     public String anonymousContext(@CurrentSecurityContext SecurityContext securityContext) {
         return securityContext.getAuthentication().getName();
+    }
+
+    @GetMapping("/invalidSessionUrl")
+    public String invalidSessionUrl(){
+        return "invalidSessionUrl";
+    }
+
+    @GetMapping("/expired")
+    public String expired(){
+        return "expired";
     }
 
 }
