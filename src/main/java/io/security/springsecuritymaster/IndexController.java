@@ -64,4 +64,14 @@ public class IndexController {
         return "expired";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "loginPage";
+    }
+
+    @GetMapping("/denied")
+    public String denied() {
+        return "denied";
+    }
+
 }
