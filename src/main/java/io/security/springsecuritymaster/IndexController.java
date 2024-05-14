@@ -90,4 +90,14 @@ public class IndexController {
         return token;
     }
 
+    @PostMapping("/formCsrf")
+    public CsrfToken formCsrf(CsrfToken csrfToken, String username, String password){
+        return csrfToken;
+    }
+
+    @PostMapping("/cookieCsrf")
+    public CsrfToken cookieCsrf(CsrfToken csrfToken){
+        return csrfToken;
+    }
+
 }
