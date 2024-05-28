@@ -100,4 +100,9 @@ public class IndexController {
         return csrfToken;
     }
 
+    @GetMapping("/secure")
+    public String secure(){
+        return "secure";
+    }
+
 }
