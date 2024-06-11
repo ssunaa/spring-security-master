@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
-                .csrf(AbstractHttpConfigurer::disable);
+                .with(MyCustomDsl.customDsl(), dsl -> dsl.flag(false));
 
         return http.build();
     }
